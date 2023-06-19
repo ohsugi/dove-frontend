@@ -3,15 +3,13 @@ import 'package:flutter/material.dart';
 import '../../size_config.dart';
 import 'components/body.dart';
 
-class OtpScreen extends StatelessWidget {
-  static String routeName = "/otp";
+class TitleScreen extends StatelessWidget {
+  static String routeName = "/title";
   @override
   Widget build(BuildContext context) {
+    // You have to call it on your starting screen
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("OTP Verification"),
-      ),
       body: Body(),
     );
   }

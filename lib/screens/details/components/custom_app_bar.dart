@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop_app/constants.dart';
 
+import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -26,7 +26,8 @@ class CustomAppBar extends StatelessWidget {
               width: getProportionateScreenWidth(40),
               child: TextButton(
                 style: TextButton.styleFrom(
-                  foregroundColor: kPrimaryColor, shape: RoundedRectangleBorder(
+                  foregroundColor: kPrimaryColor,
+                  shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(60),
                   ),
                   backgroundColor: Colors.white,

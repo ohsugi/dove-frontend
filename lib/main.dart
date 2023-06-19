@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/routes.dart';
-import 'package:shop_app/screens/splash/splash_screen.dart';
-import 'package:shop_app/theme.dart';
 
-void main() {
+import 'routes.dart';
+import 'screens/title/title_screen.dart';
+import 'theme.dart';
+
+Future<void> main() async {
   runApp(MyApp());
 }
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: theme(),
       // home: SplashScreen(),
       // We use routeName so that we dont need to remember the name
-      initialRoute: SplashScreen.routeName,
+      initialRoute: TitleScreen.routeName,
       routes: routes,
     );
   }
