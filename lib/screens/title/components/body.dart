@@ -7,6 +7,8 @@ import '../../home/home_screen.dart';
 import '../../splash/splash_screen.dart';
 
 class Body extends StatefulWidget {
+  const Body({super.key});
+
   @override
   _BodyState createState() => _BodyState();
 }
@@ -15,9 +17,11 @@ class _BodyState extends State<Body> {
   @override
   void initState() {
     super.initState();
-    Preferences.init();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Preferences.init();
+    });
     Timer(
-        Duration(seconds: 5),
+        const Duration(seconds: 3),
         () => Navigator.pushNamed(
             context,
             Preferences.splash
@@ -26,20 +30,16 @@ class _BodyState extends State<Body> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-        child: Container(
-      child: Container(
-          padding: const EdgeInsets.all(20),
-          margin: const EdgeInsets.all(20),
-          child: Text('Dove',
-              style: TextStyle(color: Colors.white, fontSize: 50))),
-      alignment: Alignment.topLeft,
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/images/title.jpg'), fit: BoxFit.cover)),
-    ));
-  }
+  Widget build(BuildContext context) => SafeArea(
+        child: Align(
+          alignment: Alignment.center,
+          child: FractionallySizedBox(
+            widthFactor: 0.7,
+            child: Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+        ),
+      );
 }

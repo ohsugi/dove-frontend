@@ -5,7 +5,9 @@ import 'components/body.dart';
 import 'components/check_out_card.dart';
 
 class CartScreen extends StatelessWidget {
-  static String routeName = "/cart";
+  static const routeName = "/cart";
+  const CartScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
