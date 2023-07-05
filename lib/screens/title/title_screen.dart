@@ -4,12 +4,14 @@ import '../../size_config.dart';
 import 'components/body.dart';
 
 class TitleScreen extends StatelessWidget {
-  static String routeName = "/title";
+  static const routeName = "/title";
+  const TitleScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     // You have to call it on your starting screen
     SizeConfig().init(context);
-    return Scaffold(
+    return const Scaffold(
       body: Body(),
     );
   }
