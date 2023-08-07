@@ -1,3 +1,4 @@
+import 'package:dove_frontend/theme_manager.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
@@ -19,17 +20,14 @@ class SectionTitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: ThemeManager.currentThemeData.textTheme.titleMedium?.copyWith(
             fontSize: getProportionateScreenWidth(18),
-            color: Colors.black,
           ),
         ),
         GestureDetector(
           onTap: press,
-          child: const Text(
-            "See More",
-            style: TextStyle(color: Color(0xFFBBBBBB)),
-          ),
+          child: Text("See More",
+              style: ThemeManager.currentThemeData.textTheme.bodySmall),
         ),
       ],
     );

@@ -36,20 +36,22 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) => ChangeNotifierProvider(
-        create: (_) => ThemeManager(),
-        child: SolanaWalletProvider.create(
-          httpCluster: _cluster,
-          identity: AppIdentity(
-              uri: Uri.parse(dotenv.env['app_uri']!),
-              icon: Uri.parse(dotenv.env['app_icon_uri']!),
-              name: dotenv.env['app_name']!),
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: dotenv.env['app_name']!,
-            theme: ThemeManager.currentThemeData,
-            initialRoute: TitleScreen.routeName,
-            routes: routes,
+  Widget build(BuildContext context) => SolanaWalletProvider.create(
+        httpCluster: _cluster,
+        identity: AppIdentity(
+            uri: Uri.parse(dotenv.env['app_uri']!),
+            icon: Uri.parse(dotenv.env['app_icon_uri']!),
+            name: dotenv.env['app_name']!),
+        child: ChangeNotifierProvider(
+          create: (_) => ThemeManager(),
+          child: Consumer<ThemeManager>(
+            builder: (context, themeManager, _) => MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: dotenv.env['app_name']!,
+              theme: ThemeManager.currentThemeData,
+              initialRoute: TitleScreen.routeName,
+              routes: routes,
+            ),
           ),
         ),
       );

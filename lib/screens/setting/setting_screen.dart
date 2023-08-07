@@ -10,13 +10,9 @@ class SettingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Setting"),
-      ),
-      body: const Body(),
-      bottomNavigationBar:
-          const CustomBottomNavBar(selectedMenu: MenuState.setting),
+    return const Scaffold(
+      body: Body(),
+      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.setting),
     );
   }
 }

@@ -14,19 +14,27 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  Timer? timer;
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Preferences.init();
     });
-    Timer(
-        const Duration(seconds: 3),
-        () => Navigator.pushNamed(
-            context,
-            Preferences.splash
-                ? SplashScreen.routeName
-                : HomeScreen.routeName));
+    timer ??= Timer(
+      const Duration(seconds: 3),
+      () => Navigator.pushNamed(
+        context,
+        Preferences.splash ? SplashScreen.routeName : HomeScreen.routeName,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override
