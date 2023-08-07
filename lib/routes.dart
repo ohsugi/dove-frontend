@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'screens/complete_profile/complete_profile_screen.dart';
 import 'screens/details/details_screen.dart';
 import 'screens/home/home_screen.dart';
-import 'screens/profile/profile_screen.dart';
+import 'screens/setting/setting_screen.dart';
 import 'screens/splash/splash_screen.dart';
 import 'screens/title/title_screen.dart';
 
@@ -15,5 +15,5 @@ final Map<String, WidgetBuilder> routes = {
   CompleteProfileScreen.routeName: (context) => const CompleteProfileScreen(),
   HomeScreen.routeName: (context) => const HomeScreen(),
   DetailsScreen.routeName: (context) => const DetailsScreen(),
-  ProfileScreen.routeName: (context) => const ProfileScreen(),
+  SettingScreen.routeName: (context) => const SettingScreen(),
 };

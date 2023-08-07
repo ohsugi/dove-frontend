@@ -1,9 +1,10 @@
+import 'package:dove_frontend/theme_manager.dart';
 import 'package:flutter/material.dart';
 
-import '../constants.dart';
 import '../enums.dart';
+import '../preferences.dart';
 import '../screens/home/home_screen.dart';
-import '../screens/profile/profile_screen.dart';
+import '../screens/setting/setting_screen.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({
@@ -15,16 +16,15 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color inActiveIconColor = Color(0xFFB6B6B6);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: ThemeManager.currentThemeData.cardColor,
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, -15),
             blurRadius: 20,
-            color: const Color(0xFFDADADA).withOpacity(0.15),
+            color: ThemeManager.currentThemeData.cardColor.withOpacity(0.15),
           ),
         ],
         borderRadius: const BorderRadius.only(
@@ -41,18 +41,22 @@ class CustomBottomNavBar extends StatelessWidget {
                 icon: Icon(
                   Icons.public,
                   color: selectedMenu == MenuState.home
-                      ? kPrimaryColor
-                      : inActiveIconColor,
+                      ? ThemeManager.currentThemeData.primaryColor
+                      : ThemeManager.currentThemeData.highlightColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, HomeScreen.routeName),
+                onPressed: () => selectedMenu == MenuState.home
+                    ? null
+                    : {
+                        Preferences.save(),
+                        Navigator.pushNamed(context, HomeScreen.routeName),
+                      },
               ),
               IconButton(
                 icon: Icon(
                   Icons.library_books,
                   color: selectedMenu == MenuState.inventry
-                      ? kPrimaryColor
-                      : inActiveIconColor,
+                      ? ThemeManager.currentThemeData.primaryColor
+                      : ThemeManager.currentThemeData.highlightColor,
                 ),
                 onPressed: () {},
               ),
@@ -60,8 +64,8 @@ class CustomBottomNavBar extends StatelessWidget {
                 icon: Icon(
                   Icons.shield,
                   color: selectedMenu == MenuState.campaign
-                      ? kPrimaryColor
-                      : inActiveIconColor,
+                      ? ThemeManager.currentThemeData.primaryColor
+                      : ThemeManager.currentThemeData.highlightColor,
                 ),
                 onPressed: () {},
               ),
@@ -69,11 +73,15 @@ class CustomBottomNavBar extends StatelessWidget {
                 icon: Icon(
                   Icons.settings,
                   color: selectedMenu == MenuState.setting
-                      ? kPrimaryColor
-                      : inActiveIconColor,
+                      ? ThemeManager.currentThemeData.primaryColor
+                      : ThemeManager.currentThemeData.highlightColor,
                 ),
-                onPressed: () =>
-                    Navigator.pushNamed(context, ProfileScreen.routeName),
+                onPressed: () => selectedMenu == MenuState.setting
+                    ? null
+                    : {
+                        Preferences.save(),
+                        Navigator.pushNamed(context, SettingScreen.routeName),
+                      },
               ),
             ],
           )),
