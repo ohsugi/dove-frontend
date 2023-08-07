@@ -7,12 +7,14 @@ import '../../home/home_screen.dart';
 import '../components/splash_content.dart';
 
 class Body extends StatefulWidget {
+  const Body({super.key});
+
   @override
-  _BodyState createState() => _BodyState();
+  State<Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  final PageController? _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
@@ -71,7 +73,7 @@ class _BodyState extends State<Body> {
                     horizontal: getProportionateScreenWidth(20)),
                 child: Column(
                   children: <Widget>[
-                    Spacer(),
+                    const Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(
@@ -79,7 +81,7 @@ class _BodyState extends State<Body> {
                         (index) => buildDot(index: index),
                       ),
                     ),
-                    Spacer(flex: 3),
+                    const Spacer(flex: 3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -87,7 +89,7 @@ class _BodyState extends State<Body> {
                           child: Text(currentPage > 0 ? "Previous" : ""),
                           onPressed: () {
                             if (currentPage > 0) {
-                              _pageController?.animateToPage(currentPage - 1,
+                              _pageController.animateToPage(currentPage - 1,
                                   curve: Curves.easeInOutCubic,
                                   duration: const Duration(milliseconds: 250));
                             }
@@ -104,7 +106,7 @@ class _BodyState extends State<Body> {
                               Navigator.pushNamed(
                                   context, HomeScreen.routeName);
                             } else {
-                              _pageController?.animateToPage(currentPage + 1,
+                              _pageController.animateToPage(currentPage + 1,
                                   curve: Curves.easeInOutCubic,
                                   duration: const Duration(milliseconds: 250));
                             }
@@ -112,7 +114,7 @@ class _BodyState extends State<Body> {
                         ),
                       ],
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
@@ -126,11 +128,11 @@ class _BodyState extends State<Body> {
   AnimatedContainer buildDot({int? index}) {
     return AnimatedContainer(
       duration: kAnimationDuration,
-      margin: EdgeInsets.only(right: 5),
+      margin: const EdgeInsets.only(right: 5),
       height: 6,
       width: currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        color: currentPage == index ? kPrimaryColor : Color(0xFFD8D8D8),
+        color: currentPage == index ? kPrimaryColor : const Color(0xFFD8D8D8),
         borderRadius: BorderRadius.circular(3),
       ),
     );
