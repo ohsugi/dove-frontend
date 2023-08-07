@@ -12,10 +12,10 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: const Text("Profile"),
       ),
-      body: Body(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.setting),
+      body: const Body(),
+      bottomNavigationBar: const CustomBottomNavBar(selectedMenu: MenuState.setting),
     );
   }
 }
