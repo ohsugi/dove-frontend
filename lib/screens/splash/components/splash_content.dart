@@ -25,6 +25,7 @@ class SplashContent extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        const Spacer(),
         Text(
           text!,
           textAlign: TextAlign.center,

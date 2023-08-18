@@ -24,10 +24,14 @@ class _BodyState extends State<Body> {
     });
     timer ??= Timer(
       const Duration(seconds: 3),
-      () => Navigator.pushNamed(
-        context,
-        Preferences.splash ? SplashScreen.routeName : HomeScreen.routeName,
-      ),
+      () {
+        final nextRouteName =
+            Preferences.splash ? SplashScreen.routeName : HomeScreen.routeName;
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          nextRouteName,
+          ModalRoute.withName(nextRouteName),
+        );
+      },
     );
   }
 

@@ -103,8 +103,10 @@ class _BodyState extends State<Body> {
                             if (currentPage == splashData.length - 1) {
                               Preferences.splash = false;
                               Preferences.save();
-                              Navigator.pushNamed(
-                                  context, HomeScreen.routeName);
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                HomeScreen.routeName,
+                                ModalRoute.withName(HomeScreen.routeName),
+                              );
                             } else {
                               _pageController.animateToPage(currentPage + 1,
                                   curve: Curves.easeInOutCubic,
